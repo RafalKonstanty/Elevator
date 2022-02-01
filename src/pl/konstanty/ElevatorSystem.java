@@ -10,11 +10,10 @@ public class ElevatorSystem {
 
     public ElevatorSystem() {
         elevators = new ArrayList<>();
-        initialization();
     }
 
 
-    private void initialization() {
+    public void initialization() {
         Scanner scanner = new Scanner(System.in);
         boolean isInitialized = false;
         System.out.println("####### ELEVATOR SYSTEM v.0.1 #######");
@@ -28,7 +27,6 @@ public class ElevatorSystem {
                     for (int i = 0; i < n; i++) {
                         Elevator elevator = new Elevator(i + 1);
                         elevators.add(elevator);
-                        elevators.get(i).setDestinationFloor(0);
                         System.out.println("Elevator number: " + (i + 1) + " is running!");
                         try {
                             TimeUnit.MILLISECONDS.sleep(200);
