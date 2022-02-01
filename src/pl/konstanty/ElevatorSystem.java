@@ -13,6 +13,7 @@ public class ElevatorSystem {
         initialization();
     }
 
+
     private void initialization() {
         Scanner scanner = new Scanner(System.in);
         boolean isInitialized = false;
@@ -45,10 +46,21 @@ public class ElevatorSystem {
         displayDashboard();
     }
 
+    /**
+     * Returns the status of the program by displaying all states in the console.
+     * @return
+     */
     public List<Elevator> getElevators() {
         return elevators;
     }
 
+    /**
+     * Update existing elevator.
+     * @param id Id of an elevator to be updated.
+     * @param currentFloor representation of the current floor.
+     * @param destinationFloor representation of the destination.
+     * @return returns updated list of elevators.
+     */
     public List<Elevator> update(int id, int currentFloor, int destinationFloor) {
         try {
             Elevator elevator = new Elevator(id);
@@ -62,6 +74,9 @@ public class ElevatorSystem {
         return elevators;
     }
 
+    /**
+     * Simulation step, should be used after every Update or Pickup handler to see changes made by program.
+     */
     public void step() {
         for (Elevator elevator : elevators) {
             if (elevator.getPickupFloors().contains(elevator.getCurrentFloor())) {
@@ -87,6 +102,9 @@ public class ElevatorSystem {
 
     }
 
+    /**
+     * A console interface for the program.
+     */
     public void displayDashboard() {
         String selectedOption = "";
         while (!selectedOption.equals("q")) {

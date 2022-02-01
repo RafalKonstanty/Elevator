@@ -29,12 +29,16 @@ public class Elevator implements ElevatorControlSystem {
         return pickupFloors;
     }
 
-    public Queue<Integer> getDestinationFloors() {
-        return destinationFloors;
+    public int getDestinationFloor() {
+        return destinationFloors.peek();
+    }
+
+    public int getPickupFloor() {
+        return pickupFloors.peek();
     }
 
     /**
-     * Remove the head of the destination queue.
+     * Removes the head of the destination queue.
      */
     public void removeDestination() {
         this.destinationFloors.poll();
@@ -56,6 +60,10 @@ public class Elevator implements ElevatorControlSystem {
     @Override
     public void setDestinationFloor(int destinationFloor) {
         this.destinationFloors.add(destinationFloor);
+    }
+
+    public Queue<Integer> getDestinationFloors() {
+        return destinationFloors;
     }
 
     @Override
@@ -84,10 +92,12 @@ public class Elevator implements ElevatorControlSystem {
     public String toString() {
         return
                 "{Elevator number: " + elevatorId +
-                " | currentFloor: " + currentFloor +
-                " | destinationFloor: " + destinationFloors +
-                " | pickupFloors: " + pickupFloors +
-                " | elevator direction: " + direction() +
-                " } \n";
+                        " | currentFloor: " + currentFloor +
+                        " | destinationFloor: " + destinationFloors +
+                        " | pickupFloors: " + pickupFloors +
+                        " | elevator direction: " + direction() +
+                        " } \n";
     }
+
+
 }
